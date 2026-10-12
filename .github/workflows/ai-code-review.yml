@@ -29,7 +29,6 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const fs = require('fs');
             const execSync = require('child_process').execSync;
 
             // 1. Ambil diff perubahan kode dari git
@@ -46,32 +45,39 @@ jobs:
               return;
             }
 
-            // Batasi ukuran diff agar tidak melebihi konteks model
             const maxDiffLength = 8000;
             const truncatedDiff = diff.length > maxDiffLength ? diff.substring(0, maxDiffLength) + '\n...[Diff dipotong karena terlalu panjang]' : diff;
 
-            // 2. Susun prompt arsitektur .NET & Golang
-            const systemPrompt = `Bertindaklah sebagai Senior Software Architect untuk .NET dan Golang.
-            Evaluasi perubahan kode (diff) berikut berdasarkan standar:
-            - Arsitektur: Laporkan jika ada pelanggaran batas layer (misal Controller/Handler memanggil DB/Repository langsung).
-            - Clean Code: Evaluasi penamaan variabel, kompleksitas fungsi, dan keterbacaan.
-            - Golang: Cek penanganan error (if err != nil) dan pastikan di-wrap dengan benar (fmt.Errorf).
-            - .NET: Cek penggunaan Result pattern, async/await, dan exception handling.
-            Berikan umpan balik ringkas dalam bahasa Indonesia langsung pada poin-poin yang perlu diperbaiki.`;
+            // 2. Prompt yang disempurnakan dengan instruksi Syntax Error Check
+            const systemPrompt = `Bertindaklah sebagai Senior Code Reviewer dan Architect untuk .NET (C#) dan Golang.
+            Tugas utama Anda adalah mengevaluasi perubahan kode (diff) ini secara teliti:
+
+            1. **Sintaks & Syntax Error (PRIORITAS UTAMA):**
+               - Periksa dengan cermat kesalahan sintaks C# / Go pada baris bertanda '+'.
+               - Cari kesalahan seperti: tanda titik koma ekstra (misal: 'public string Title { get; set; };'), tanda kurung tidak lengkap, tipe data salah, atau penulisan keyword yang keliru.
+            
+            2. **Arsitektur & Clean Code:**
+               - Laporkan jika ada pelanggaran batas layer (misal Controller/Handler memanggil DB/Repository langsung).
+               - Cek error handling di Golang (fmt.Errorf wrapping) dan .NET (async/await, Result pattern).
+
+            Jika menemukan kesalahan sintaks, SEBUTKAN BARIS KODE YANG SALAH dan jelaskan perbaikannya.`;
 
             const prompt = `${systemPrompt}\n\nBerikut adalah diff kode:\n\`\`\`diff\n${truncatedDiff}\n\`\`\``;
 
             console.log('Mengirimkan diff ke Ollama lokal...');
 
-            // 3. Panggil API Ollama lokal via fetch
+            // 3. Panggil API Ollama lokal (diperbaiki header application/json dan temperature)
             try {
               const response = await fetch('http://localhost:11434/api/generate', {
                 method: 'POST',
-                headers: { 'Content-Type': 'json' },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                   model: 'qwen2.5-coder:7b',
                   prompt: prompt,
-                  stream: false
+                  stream: false,
+                  options: {
+                    temperature: 0.1 // Temperature rendah agar AI lebih kritis dan presisi
+                  }
                 })
               });
 

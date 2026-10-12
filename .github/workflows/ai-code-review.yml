@@ -1,4 +1,4 @@
-name: AI Code Reviewer (Lokal Cross-Platform)
+name: AI Code Reviewer (Lokal Ollama)
 
 on:
   pull_request:
@@ -19,20 +19,78 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: AI Code Review
-        uses: anc95/ChatGPT-CodeReview@main
-        env:
-          # Konfigurasi via environment variables agar kompatibel dengan Ollama
-          OPENAI_API_KEY: "ollama-dummy-key"
-          CODE_REVIEW_LKG_BASE_URL: "http://localhost:11434/v1"
-          MODEL: "qwen2.5-coder:7b"
-          LANGUAGE: "Indonesian"
-          PROMPT: |
-            Bertindaklah sebagai Senior Software Architect untuk .NET dan Golang.
-            Evaluasi perubahan kode (diff) ini berdasarkan standar berikut:
-            - **Arsitektur:** Laporkan jika ada pelanggaran batas layer (misal: Controller memanggil DB langsung).
-            - **Clean Code:** Evaluasi penamaan variabel, kompleksitas fungsi, dan keterbacaan kode.
-            - **Golang Specific:** Cek penanganan error (`if err != nil`), pastikan error di-wrap dengan benar (`fmt.Errorf`).
-            - **.NET Specific:** Cek penggunaan Result pattern, async/await, dan exception handling.
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          node-version: '20'
+
+      - name: Get PR Diff & Run Local AI Review
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const execSync = require('child_process').execSync;
+
+            // 1. Ambil diff perubahan kode dari git
+            let diff = '';
+            try {
+              diff = execSync('git diff origin/' + context.payload.pull_request.base.ref + '...HEAD', { encoding: 'utf-8' });
+            } catch (err) {
+              console.error('Gagal mengambil git diff:', err);
+              return;
+            }
+
+            if (!diff || diff.trim() === '') {
+              console.log('Tidak ada perubahan kode yang ditemukan.');
+              return;
+            }
+
+            // Batasi ukuran diff agar tidak melebihi konteks model
+            const maxDiffLength = 8000;
+            const truncatedDiff = diff.length > maxDiffLength ? diff.substring(0, maxDiffLength) + '\n...[Diff dipotong karena terlalu panjang]' : diff;
+
+            // 2. Susun prompt arsitektur .NET & Golang
+            const systemPrompt = `Bertindaklah sebagai Senior Software Architect untuk .NET dan Golang.
+            Evaluasi perubahan kode (diff) berikut berdasarkan standar:
+            - Arsitektur: Laporkan jika ada pelanggaran batas layer (misal Controller/Handler memanggil DB/Repository langsung).
+            - Clean Code: Evaluasi penamaan variabel, kompleksitas fungsi, dan keterbacaan.
+            - Golang: Cek penanganan error (if err != nil) dan pastikan di-wrap dengan benar (fmt.Errorf).
+            - .NET: Cek penggunaan Result pattern, async/await, dan exception handling.
+            Berikan umpan balik ringkas dalam bahasa Indonesia langsung pada poin-poin yang perlu diperbaiki.`;
+
+            const prompt = `${systemPrompt}\n\nBerikut adalah diff kode:\n\`\`\`diff\n${truncatedDiff}\n\`\`\``;
+
+            console.log('Mengirimkan diff ke Ollama lokal...');
+
+            // 3. Panggil API Ollama lokal via fetch
+            try {
+              const response = await fetch('http://localhost:11434/api/generate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'json' },
+                body: JSON.stringify({
+                  model: 'qwen2.5-coder:7b',
+                  prompt: prompt,
+                  stream: false
+                })
+              });
+
+              if (!response.ok) {
+                throw new Error(`Ollama API Error: ${response.status} ${response.statusText}`);
+              }
+
+              const data = await response.json();
+              const reviewResult = data.response;
+
+              // 4. Kirim komentar hasil review ke Pull Request
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: `### 🤖 AI Code Review (Local Qwen2.5-Coder)\n\n${reviewResult}`
+              });
+
+              console.log('Berhasil menambahkan komentar review ke PR!');
+            } catch (error) {
+              core.setFailed(`Gagal menjalankan AI Review: ${error.message}`);
+            }

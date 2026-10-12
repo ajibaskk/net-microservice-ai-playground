@@ -1,33 +1,37 @@
-name: AI Code Reviewer (Lokal)
+name: AI Code Reviewer (Lokal Cross-Platform)
 
 on:
   pull_request:
-    types: [opened, reopened, synchronize]
+    types: [opened, synchronize]
 
 jobs:
   review:
-    # Memerintahkan job untuk berjalan di PC lokal kamu
     runs-on: self-hosted
 
     permissions:
       contents: read
       pull-requests: write
-      issues: write
 
     steps:
-      - name: PR Agent Action
-        uses: Codium-ai/pr-agent@main
-        env:
-          # Mengakses Ollama yang berjalan di PC lokal
-          OPENAI_BASE_URL: "http://localhost:11434/v1"
-          OPENAI_KEY: "ollama-dummy-key"
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: AI Code Review
+        uses: anc95/ChatGPT-CodeReview@v1
+        with:
+          # Arahkan endpoint ke Ollama lokal
+          openai_base_path: "http://localhost:11434/v1"
+          openai_api_key: "ollama-dummy-key"
+          openai_api_model: "qwen2.5-coder:7b"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          language: "id"
           
-          # Nama model yang tadi sudah kita unduh
-          OPENAI_MODEL: "qwen2.5-coder:7b"
-          
-          # Instruksi peninjauan kode
-          PR_REVIEWER.EXTRA_INSTRUCTIONS: |
-            1. Periksa batas layer arsitektur (.NET Clean Architecture / Golang Hexagonal).
-            2. Pastikan penanganan error di Golang dibungkus (wrapped) dengan benar.
-            3. Berikan saran perbaikan kode jika ada pelanggaran Clean Code atau prinsip SOLID.
+          prompt: |
+            Bertindaklah sebagai Senior Software Architect untuk .NET dan Golang.
+            Evaluasi perubahan kode (diff) ini berdasarkan standar berikut:
+            - **Arsitektur:** Laporkan jika ada pelanggaran batas layer (misal: Controller memanggil DB langsung).
+            - **Clean Code:** Evaluasi penamaan variabel, kompleksitas fungsi, dan keterbacaan kode.
+            - **Golang Specific:** Cek penanganan error (`if err != nil`), pastikan error di-wrap dengan benar (`fmt.Errorf`).
+            - **.NET Specific:** Cek penggunaan Result pattern, async/await, dan exception handling.

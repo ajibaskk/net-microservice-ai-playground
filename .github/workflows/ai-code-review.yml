@@ -2,7 +2,7 @@ name: AI Code Reviewer (Lokal Cross-Platform)
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, synchronize, reopened]
 
 jobs:
   review:
@@ -11,6 +11,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
+      issues: write
 
     steps:
       - name: Checkout Code
@@ -19,19 +20,19 @@ jobs:
           fetch-depth: 0
 
       - name: AI Code Review
-        uses: anc95/ChatGPT-CodeReview@v1
-        with:
-          # Arahkan endpoint ke Ollama lokal
-          openai_base_path: "http://localhost:11434/v1"
-          openai_api_key: "ollama-dummy-key"
-          openai_api_model: "qwen2.5-coder:7b"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          language: "id"
-          
-          prompt: |
+        uses: anc95/ChatGPT-CodeReview@main
+        env:
+          # Konfigurasi via environment variables agar kompatibel dengan Ollama
+          OPENAI_API_KEY: "ollama-dummy-key"
+          CODE_REVIEW_LKG_BASE_URL: "http://localhost:11434/v1"
+          MODEL: "qwen2.5-coder:7b"
+          LANGUAGE: "Indonesian"
+          PROMPT: |
             Bertindaklah sebagai Senior Software Architect untuk .NET dan Golang.
             Evaluasi perubahan kode (diff) ini berdasarkan standar berikut:
             - **Arsitektur:** Laporkan jika ada pelanggaran batas layer (misal: Controller memanggil DB langsung).
             - **Clean Code:** Evaluasi penamaan variabel, kompleksitas fungsi, dan keterbacaan kode.
             - **Golang Specific:** Cek penanganan error (`if err != nil`), pastikan error di-wrap dengan benar (`fmt.Errorf`).
             - **.NET Specific:** Cek penggunaan Result pattern, async/await, dan exception handling.
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

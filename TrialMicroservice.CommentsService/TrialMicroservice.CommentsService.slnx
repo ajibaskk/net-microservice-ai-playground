@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Domain/TrialMicroservice.CommentsService.Domain.csproj" />
+    <Project Path="src/Application/TrialMicroservice.CommentsService.Application.csproj" />
+    <Project Path="src/Infrastructure/TrialMicroservice.CommentsService.Infrastructure.csproj" />
+    <Project Path="src/Api/TrialMicroservice.CommentsService.Api.csproj" />
+  </Folder>
+</Solution>

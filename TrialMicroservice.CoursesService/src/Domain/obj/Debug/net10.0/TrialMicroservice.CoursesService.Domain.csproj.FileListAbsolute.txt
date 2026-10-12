@@ -1,0 +1,11 @@
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Domain\bin\Debug\net10.0\TrialMicroservice.CoursesService.Domain.deps.json
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Domain\bin\Debug\net10.0\TrialMicroservice.CoursesService.Domain.dll
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Domain\bin\Debug\net10.0\TrialMicroservice.CoursesService.Domain.pdb
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Domain\obj\Debug\net10.0\TrialMicroservice.CoursesService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Domain\obj\Debug\net10.0\TrialMicroservice.CoursesService.Domain.AssemblyInfoInputs.cache
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Domain\obj\Debug\net10.0\TrialMicroservice.CoursesService.Domain.AssemblyInfo.cs
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Domain\obj\Debug\net10.0\TrialMicroservice.CoursesService.Domain.csproj.CoreCompileInputs.cache
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Domain\obj\Debug\net10.0\TrialMicroservice.CoursesService.Domain.dll
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Domain\obj\Debug\net10.0\refint\TrialMicroservice.CoursesService.Domain.dll
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Domain\obj\Debug\net10.0\TrialMicroservice.CoursesService.Domain.pdb
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Domain\obj\Debug\net10.0\ref\TrialMicroservice.CoursesService.Domain.dll

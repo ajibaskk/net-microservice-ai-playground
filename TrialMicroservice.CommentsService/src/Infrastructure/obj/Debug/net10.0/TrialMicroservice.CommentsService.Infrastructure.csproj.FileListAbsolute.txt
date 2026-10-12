@@ -1,0 +1,17 @@
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Infrastructure\obj\Debug\net10.0\TrialMicroservice.CommentsService.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Infrastructure\obj\Debug\net10.0\TrialMicroservice.CommentsService.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Infrastructure\obj\Debug\net10.0\TrialMicroservice.CommentsService.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Infrastructure\obj\Debug\net10.0\TrialMicroservice.CommentsService.Infrastructure.AssemblyInfo.cs
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Infrastructure\obj\Debug\net10.0\TrialMicroservice.CommentsService.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Infrastructure\bin\Debug\net10.0\TrialMicroservice.CommentsService.Infrastructure.deps.json
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Infrastructure\bin\Debug\net10.0\TrialMicroservice.CommentsService.Infrastructure.dll
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Infrastructure\bin\Debug\net10.0\TrialMicroservice.CommentsService.Infrastructure.pdb
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Infrastructure\bin\Debug\net10.0\TrialMicroservice.CommentsService.Application.dll
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Infrastructure\bin\Debug\net10.0\TrialMicroservice.CommentsService.Domain.dll
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Infrastructure\bin\Debug\net10.0\TrialMicroservice.CommentsService.Application.pdb
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Infrastructure\bin\Debug\net10.0\TrialMicroservice.CommentsService.Domain.pdb
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Infrastructure\obj\Debug\net10.0\TrialMic.9A0F1C6F.Up2Date
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Infrastructure\obj\Debug\net10.0\TrialMicroservice.CommentsService.Infrastructure.dll
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Infrastructure\obj\Debug\net10.0\refint\TrialMicroservice.CommentsService.Infrastructure.dll
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Infrastructure\obj\Debug\net10.0\TrialMicroservice.CommentsService.Infrastructure.pdb
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Infrastructure\obj\Debug\net10.0\ref\TrialMicroservice.CommentsService.Infrastructure.dll

@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Domain/TrialMicroservice.CoursesService.Domain.csproj" />
+    <Project Path="src/Application/TrialMicroservice.CoursesService.Application.csproj" />
+    <Project Path="src/Infrastructure/TrialMicroservice.CoursesService.Infrastructure.csproj" />
+    <Project Path="src/Api/TrialMicroservice.CoursesService.Api.csproj" />
+  </Folder>
+</Solution>

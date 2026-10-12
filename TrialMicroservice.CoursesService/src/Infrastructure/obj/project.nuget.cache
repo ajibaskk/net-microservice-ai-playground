@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "ed/ZajpbxSU=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Infrastructure\\TrialMicroservice.CoursesService.Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\aji9c\\.nuget\\packages\\confluent.kafka\\2.16.0\\confluent.kafka.2.16.0.nupkg.sha512",
+    "C:\\Users\\aji9c\\.nuget\\packages\\librdkafka.redist\\2.16.0\\librdkafka.redist.2.16.0.nupkg.sha512",
+    "C:\\Users\\aji9c\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.4\\microsoft.entityframeworkcore.10.0.4.nupkg.sha512",
+    "C:\\Users\\aji9c\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\10.0.4\\microsoft.entityframeworkcore.abstractions.10.0.4.nupkg.sha512",
+    "C:\\Users\\aji9c\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\10.0.4\\microsoft.entityframeworkcore.analyzers.10.0.4.nupkg.sha512",
+    "C:\\Users\\aji9c\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\10.0.4\\microsoft.entityframeworkcore.relational.10.0.4.nupkg.sha512",
+    "C:\\Users\\aji9c\\.nuget\\packages\\npgsql\\10.0.3\\npgsql.10.0.3.nupkg.sha512",
+    "C:\\Users\\aji9c\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\10.0.3\\npgsql.entityframeworkcore.postgresql.10.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

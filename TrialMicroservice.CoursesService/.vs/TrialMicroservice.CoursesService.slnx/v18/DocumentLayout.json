@@ -1,0 +1,207 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C8071EC8-F3A1-0034-5592-0C9E85CA75AC}|src\\Application\\TrialMicroservice.CoursesService.Application.csproj|c:\\users\\aji9c\\onedrive\\documents\\ojk\\orientasi\\research\\trialmicroservice\\trialmicroservice.coursesservice\\src\\application\\courses\\courseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8071EC8-F3A1-0034-5592-0C9E85CA75AC}|src\\Application\\TrialMicroservice.CoursesService.Application.csproj|solutionrelative:src\\application\\courses\\courseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EDB5AFE-5AC0-1CD5-60B4-55137A128D44}|src\\Domain\\TrialMicroservice.CoursesService.Domain.csproj|c:\\users\\aji9c\\onedrive\\documents\\ojk\\orientasi\\research\\trialmicroservice\\trialmicroservice.coursesservice\\src\\domain\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EDB5AFE-5AC0-1CD5-60B4-55137A128D44}|src\\Domain\\TrialMicroservice.CoursesService.Domain.csproj|solutionrelative:src\\domain\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8071EC8-F3A1-0034-5592-0C9E85CA75AC}|src\\Application\\TrialMicroservice.CoursesService.Application.csproj|c:\\users\\aji9c\\onedrive\\documents\\ojk\\orientasi\\research\\trialmicroservice\\trialmicroservice.coursesservice\\src\\application\\courses\\coursedtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8071EC8-F3A1-0034-5592-0C9E85CA75AC}|src\\Application\\TrialMicroservice.CoursesService.Application.csproj|solutionrelative:src\\application\\courses\\coursedtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB8AF3C7-31BD-3141-511D-D41DB9E5842A}|src\\Infrastructure\\TrialMicroservice.CoursesService.Infrastructure.csproj|c:\\users\\aji9c\\onedrive\\documents\\ojk\\orientasi\\research\\trialmicroservice\\trialmicroservice.coursesservice\\src\\infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB8AF3C7-31BD-3141-511D-D41DB9E5842A}|src\\Infrastructure\\TrialMicroservice.CoursesService.Infrastructure.csproj|solutionrelative:src\\infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB8AF3C7-31BD-3141-511D-D41DB9E5842A}|src\\Infrastructure\\TrialMicroservice.CoursesService.Infrastructure.csproj|c:\\users\\aji9c\\onedrive\\documents\\ojk\\orientasi\\research\\trialmicroservice\\trialmicroservice.coursesservice\\src\\infrastructure\\persistence\\coursedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB8AF3C7-31BD-3141-511D-D41DB9E5842A}|src\\Infrastructure\\TrialMicroservice.CoursesService.Infrastructure.csproj|solutionrelative:src\\infrastructure\\persistence\\coursedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EDB5AFE-5AC0-1CD5-60B4-55137A128D44}|src\\Domain\\TrialMicroservice.CoursesService.Domain.csproj|c:\\users\\aji9c\\onedrive\\documents\\ojk\\orientasi\\research\\trialmicroservice\\trialmicroservice.coursesservice\\src\\domain\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EDB5AFE-5AC0-1CD5-60B4-55137A128D44}|src\\Domain\\TrialMicroservice.CoursesService.Domain.csproj|solutionrelative:src\\domain\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8071EC8-F3A1-0034-5592-0C9E85CA75AC}|src\\Application\\TrialMicroservice.CoursesService.Application.csproj|c:\\users\\aji9c\\onedrive\\documents\\ojk\\orientasi\\research\\trialmicroservice\\trialmicroservice.coursesservice\\src\\application\\abstractions\\ieventpublisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8071EC8-F3A1-0034-5592-0C9E85CA75AC}|src\\Application\\TrialMicroservice.CoursesService.Application.csproj|solutionrelative:src\\application\\abstractions\\ieventpublisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8071EC8-F3A1-0034-5592-0C9E85CA75AC}|src\\Application\\TrialMicroservice.CoursesService.Application.csproj|c:\\users\\aji9c\\onedrive\\documents\\ojk\\orientasi\\research\\trialmicroservice\\trialmicroservice.coursesservice\\src\\application\\abstractions\\icoursestore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8071EC8-F3A1-0034-5592-0C9E85CA75AC}|src\\Application\\TrialMicroservice.CoursesService.Application.csproj|solutionrelative:src\\application\\abstractions\\icoursestore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2326CD27-2FF0-552B-1406-DBE965772074}|src\\Api\\TrialMicroservice.CoursesService.Api.csproj|c:\\users\\aji9c\\onedrive\\documents\\ojk\\orientasi\\research\\trialmicroservice\\trialmicroservice.coursesservice\\src\\api\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2326CD27-2FF0-552B-1406-DBE965772074}|src\\Api\\TrialMicroservice.CoursesService.Api.csproj|solutionrelative:src\\api\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB8AF3C7-31BD-3141-511D-D41DB9E5842A}|src\\Infrastructure\\TrialMicroservice.CoursesService.Infrastructure.csproj|c:\\users\\aji9c\\onedrive\\documents\\ojk\\orientasi\\research\\trialmicroservice\\trialmicroservice.coursesservice\\src\\infrastructure\\persistence\\coursestore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB8AF3C7-31BD-3141-511D-D41DB9E5842A}|src\\Infrastructure\\TrialMicroservice.CoursesService.Infrastructure.csproj|solutionrelative:src\\infrastructure\\persistence\\coursestore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2326CD27-2FF0-552B-1406-DBE965772074}|src\\Api\\TrialMicroservice.CoursesService.Api.csproj|c:\\users\\aji9c\\onedrive\\documents\\ojk\\orientasi\\research\\trialmicroservice\\trialmicroservice.coursesservice\\src\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2326CD27-2FF0-552B-1406-DBE965772074}|src\\Api\\TrialMicroservice.CoursesService.Api.csproj|solutionrelative:src\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Lesson.cs",
+              "DocumentMoniker": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Domain\\Lesson.cs",
+              "RelativeDocumentMoniker": "src\\Domain\\Lesson.cs",
+              "ToolTip": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Domain\\Lesson.cs",
+              "RelativeToolTip": "src\\Domain\\Lesson.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-12T10:20:32.141Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IEventPublisher.cs",
+              "DocumentMoniker": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Application\\Abstractions\\IEventPublisher.cs",
+              "RelativeDocumentMoniker": "src\\Application\\Abstractions\\IEventPublisher.cs",
+              "ToolTip": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Application\\Abstractions\\IEventPublisher.cs",
+              "RelativeToolTip": "src\\Application\\Abstractions\\IEventPublisher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-12T10:13:53.026Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CourseDtos.cs",
+              "DocumentMoniker": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Application\\Courses\\CourseDtos.cs",
+              "RelativeDocumentMoniker": "src\\Application\\Courses\\CourseDtos.cs",
+              "ToolTip": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Application\\Courses\\CourseDtos.cs",
+              "RelativeToolTip": "src\\Application\\Courses\\CourseDtos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-12T10:04:11.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Course.cs",
+              "DocumentMoniker": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Domain\\Course.cs",
+              "RelativeDocumentMoniker": "src\\Domain\\Course.cs",
+              "ToolTip": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Domain\\Course.cs",
+              "RelativeToolTip": "src\\Domain\\Course.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-12T10:01:52.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CourseDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Infrastructure\\Persistence\\CourseDbContext.cs",
+              "RelativeDocumentMoniker": "src\\Infrastructure\\Persistence\\CourseDbContext.cs",
+              "ToolTip": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Infrastructure\\Persistence\\CourseDbContext.cs",
+              "RelativeToolTip": "src\\Infrastructure\\Persistence\\CourseDbContext.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-12T10:02:13.771Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Infrastructure\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "src\\Infrastructure\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Infrastructure\\DependencyInjection.cs",
+              "RelativeToolTip": "src\\Infrastructure\\DependencyInjection.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-12T10:02:39.792Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CourseService.cs",
+              "DocumentMoniker": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Application\\Courses\\CourseService.cs",
+              "RelativeDocumentMoniker": "src\\Application\\Courses\\CourseService.cs",
+              "ToolTip": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Application\\Courses\\CourseService.cs",
+              "RelativeToolTip": "src\\Application\\Courses\\CourseService.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAA5wB8AAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-12T10:01:29.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ICourseStore.cs",
+              "DocumentMoniker": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Application\\Abstractions\\ICourseStore.cs",
+              "RelativeDocumentMoniker": "src\\Application\\Abstractions\\ICourseStore.cs",
+              "ToolTip": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Application\\Abstractions\\ICourseStore.cs",
+              "RelativeToolTip": "src\\Application\\Abstractions\\ICourseStore.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-12T10:05:59.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CoursesController.cs",
+              "DocumentMoniker": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Api\\Controllers\\CoursesController.cs",
+              "RelativeDocumentMoniker": "src\\Api\\Controllers\\CoursesController.cs",
+              "ToolTip": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Api\\Controllers\\CoursesController.cs",
+              "RelativeToolTip": "src\\Api\\Controllers\\CoursesController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-12T10:03:54.012Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CourseStore.cs",
+              "DocumentMoniker": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Infrastructure\\Persistence\\CourseStore.cs",
+              "RelativeDocumentMoniker": "src\\Infrastructure\\Persistence\\CourseStore.cs",
+              "ToolTip": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Infrastructure\\Persistence\\CourseStore.cs",
+              "RelativeToolTip": "src\\Infrastructure\\Persistence\\CourseStore.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-12T10:01:57.458Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Api\\Program.cs",
+              "RelativeDocumentMoniker": "src\\Api\\Program.cs",
+              "ToolTip": "C:\\Users\\aji9c\\OneDrive\\Documents\\OJK\\Orientasi\\Research\\TrialMicroservice\\TrialMicroservice.CoursesService\\src\\Api\\Program.cs",
+              "RelativeToolTip": "src\\Api\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-12T10:00:42.554Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

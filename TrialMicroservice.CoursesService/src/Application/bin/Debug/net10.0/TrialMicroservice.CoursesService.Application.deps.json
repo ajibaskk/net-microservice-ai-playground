@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "TrialMicroservice.CoursesService.Application/1.0.0": {
+        "dependencies": {
+          "TrialMicroservice.CoursesService.Domain": "1.0.0"
+        },
+        "runtime": {
+          "TrialMicroservice.CoursesService.Application.dll": {}
+        }
+      },
+      "TrialMicroservice.CoursesService.Domain/1.0.0": {
+        "runtime": {
+          "TrialMicroservice.CoursesService.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TrialMicroservice.CoursesService.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TrialMicroservice.CoursesService.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

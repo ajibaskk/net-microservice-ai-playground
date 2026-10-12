@@ -1,0 +1,15 @@
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Application\bin\Debug\net10.0\TrialMicroservice.CommentsService.Application.deps.json
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Application\bin\Debug\net10.0\TrialMicroservice.CommentsService.Application.dll
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Application\bin\Debug\net10.0\TrialMicroservice.CommentsService.Application.pdb
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Application\bin\Debug\net10.0\TrialMicroservice.CommentsService.Domain.dll
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Application\bin\Debug\net10.0\TrialMicroservice.CommentsService.Domain.pdb
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Application\obj\Debug\net10.0\TrialMicroservice.CommentsService.Application.csproj.AssemblyReference.cache
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Application\obj\Debug\net10.0\TrialMicroservice.CommentsService.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Application\obj\Debug\net10.0\TrialMicroservice.CommentsService.Application.AssemblyInfoInputs.cache
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Application\obj\Debug\net10.0\TrialMicroservice.CommentsService.Application.AssemblyInfo.cs
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Application\obj\Debug\net10.0\TrialMicroservice.CommentsService.Application.csproj.CoreCompileInputs.cache
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Application\obj\Debug\net10.0\TrialMic.76E95299.Up2Date
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Application\obj\Debug\net10.0\TrialMicroservice.CommentsService.Application.dll
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Application\obj\Debug\net10.0\refint\TrialMicroservice.CommentsService.Application.dll
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Application\obj\Debug\net10.0\TrialMicroservice.CommentsService.Application.pdb
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CommentsService\src\Application\obj\Debug\net10.0\ref\TrialMicroservice.CommentsService.Application.dll

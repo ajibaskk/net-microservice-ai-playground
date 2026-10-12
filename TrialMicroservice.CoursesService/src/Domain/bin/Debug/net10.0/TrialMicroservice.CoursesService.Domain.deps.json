@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "TrialMicroservice.CoursesService.Domain/1.0.0": {
+        "runtime": {
+          "TrialMicroservice.CoursesService.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TrialMicroservice.CoursesService.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

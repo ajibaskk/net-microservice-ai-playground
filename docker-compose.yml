@@ -1,0 +1,28 @@
+name: trial-microservice
+
+# Kafka (localhost:9092) and Redis (localhost:6379) are NOT declared here: this machine
+# already runs `local-kafka` and `local-redis` on those exact ports. Starting duplicates
+# would fail with "port is already allocated". To bring up the whole stack from scratch,
+# stop those two containers and run: docker compose -f docker-compose.yml -f docker-compose.infra.yml up -d
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: trial-postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    ports:
+      # 5433 on the host: 5432 is already taken by the monolith's local-postgres.
+      - "5433:5432"
+    volumes:
+      - trial_pgdata:/var/lib/postgresql/data
+      - ./infra/init-databases.sql:/docker-entrypoint-initdb.d/01-init-databases.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  trial_pgdata:

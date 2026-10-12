@@ -1,0 +1,17 @@
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Infrastructure\bin\Debug\net10.0\TrialMicroservice.CoursesService.Infrastructure.deps.json
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Infrastructure\bin\Debug\net10.0\TrialMicroservice.CoursesService.Infrastructure.dll
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Infrastructure\bin\Debug\net10.0\TrialMicroservice.CoursesService.Infrastructure.pdb
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Infrastructure\bin\Debug\net10.0\TrialMicroservice.CoursesService.Application.dll
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Infrastructure\bin\Debug\net10.0\TrialMicroservice.CoursesService.Domain.dll
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Infrastructure\bin\Debug\net10.0\TrialMicroservice.CoursesService.Application.pdb
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Infrastructure\bin\Debug\net10.0\TrialMicroservice.CoursesService.Domain.pdb
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Infrastructure\obj\Debug\net10.0\TrialMicroservice.CoursesService.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Infrastructure\obj\Debug\net10.0\TrialMicroservice.CoursesService.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Infrastructure\obj\Debug\net10.0\TrialMicroservice.CoursesService.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Infrastructure\obj\Debug\net10.0\TrialMicroservice.CoursesService.Infrastructure.AssemblyInfo.cs
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Infrastructure\obj\Debug\net10.0\TrialMicroservice.CoursesService.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Infrastructure\obj\Debug\net10.0\TrialMic.9767B17C.Up2Date
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Infrastructure\obj\Debug\net10.0\TrialMicroservice.CoursesService.Infrastructure.dll
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Infrastructure\obj\Debug\net10.0\refint\TrialMicroservice.CoursesService.Infrastructure.dll
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Infrastructure\obj\Debug\net10.0\TrialMicroservice.CoursesService.Infrastructure.pdb
+C:\Users\aji9c\OneDrive\Documents\OJK\Orientasi\Research\TrialMicroservice\TrialMicroservice.CoursesService\src\Infrastructure\obj\Debug\net10.0\ref\TrialMicroservice.CoursesService.Infrastructure.dll

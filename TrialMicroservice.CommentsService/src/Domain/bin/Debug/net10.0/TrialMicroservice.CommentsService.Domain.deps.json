@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "TrialMicroservice.CommentsService.Domain/1.0.0": {
+        "runtime": {
+          "TrialMicroservice.CommentsService.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TrialMicroservice.CommentsService.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

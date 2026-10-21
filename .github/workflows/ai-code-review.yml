@@ -41,33 +41,30 @@ jobs:
             }
 
             if (!diff || diff.trim() === '') {
-              console.log('Tidak ada perubahan kode yang ditemukan.');
+              console.log('Tidak ada perubahan kode.');
               return;
             }
 
             const maxDiffLength = 8000;
-            const truncatedDiff = diff.length > maxDiffLength ? diff.substring(0, maxDiffLength) + '\n...[Diff dipotong karena terlalu panjang]' : diff;
+            const truncatedDiff = diff.length > maxDiffLength ? diff.substring(0, maxDiffLength) + '\n...[Diff dipotong]' : diff;
 
-            // 2. Prompt yang disempurnakan dengan instruksi Syntax Error Check
-            const systemPrompt = `Bertindaklah sebagai Senior Code Reviewer dan Architect untuk .NET (C#) dan Golang.
-            Tugas utama Anda adalah mengevaluasi perubahan kode (diff) ini secara teliti:
+            // 2. System Prompt dengan instruksi status penolakan/persetujuan
+            const systemPrompt = `Bertindaklah sebagai Senior Software Architect untuk .NET dan Golang.
+            Evaluasi perubahan kode (diff) berikut berdasarkan standar:
+            1. Arsitektur: Batas antar-layer (misal Controller/Handler tidak boleh akses DB/Repository langsung).
+            2. Clean Code: Kejelasan logika, penamaan, dan pembungkusan error (fmt.Errorf pada Go).
+            3. Best Practice: Penggunaan async/await, Result pattern pada .NET, serta potensi bug logika.
 
-            1. **Sintaks & Syntax Error (PRIORITAS UTAMA):**
-               - Periksa dengan cermat kesalahan sintaks C# / Go pada baris bertanda '+'.
-               - Cari kesalahan seperti: tanda titik koma ekstra (misal: 'public string Title { get; set; };'), tanda kurung tidak lengkap, tipe data salah, atau penulisan keyword yang keliru.
-            
-            2. **Arsitektur & Clean Code:**
-               - Laporkan jika ada pelanggaran batas layer (misal Controller/Handler memanggil DB/Repository langsung).
-               - Cek error handling di Golang (fmt.Errorf wrapping) dan .NET (async/await, Result pattern).
+            Aturan Output Status:
+            - Jika ADA pelanggaran arsitektur, bug fatal, atau clean code yang buruk, jelaskan poin masalahnya lalu AKHIRI respon Anda dengan kata '[REJECTED]'.
+            - Jika kode SUDAH SESUAI dan tidak ada masalah, berikan apresiasi ringkas lalu AKHIRI respon Anda dengan kata '[APPROVED]'.`;
 
-            Jika menemukan kesalahan sintaks, SEBUTKAN BARIS KODE YANG SALAH dan jelaskan perbaikannya.`;
-
-            const prompt = `${systemPrompt}\n\nBerikut adalah diff kode:\n\`\`\`diff\n${truncatedDiff}\n\`\`\``;
+            const prompt = `${systemPrompt}\n\nBerikut diff kode:\n\`\`\`diff\n${truncatedDiff}\n\`\`\``;
 
             console.log('Mengirimkan diff ke Ollama lokal...');
 
-            // 3. Panggil API Ollama lokal (diperbaiki header application/json dan temperature)
             try {
+              // 3. Panggil API Ollama lokal
               const response = await fetch('http://localhost:11434/api/generate', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -75,20 +72,16 @@ jobs:
                   model: 'qwen2.5-coder:7b',
                   prompt: prompt,
                   stream: false,
-                  options: {
-                    temperature: 0.1 // Temperature rendah agar AI lebih kritis dan presisi
-                  }
+                  options: { temperature: 0.1 }
                 })
               });
 
-              if (!response.ok) {
-                throw new Error(`Ollama API Error: ${response.status} ${response.statusText}`);
-              }
+              if (!response.ok) throw new Error(`Ollama Error: ${response.statusText}`);
 
               const data = await response.json();
               const reviewResult = data.response;
 
-              // 4. Kirim komentar hasil review ke Pull Request
+              // 4. Buat komentar hasil review di Pull Request
               await github.rest.issues.createComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
@@ -96,7 +89,15 @@ jobs:
                 body: `### 🤖 AI Code Review (Local Qwen2.5-Coder)\n\n${reviewResult}`
               });
 
-              console.log('Berhasil menambahkan komentar review ke PR!');
+              // -------------------------------------------------------------
+              // LOGIKA PENENTUAN STATUS CHECK GITHUB (DISINI TAMBAHANNYA)
+              // -------------------------------------------------------------
+              if (reviewResult.includes('[REJECTED]')) {
+                core.setFailed('❌ AI Code Reviewer Menolak PR ini: Ditemukan pelanggaran arsitektur atau clean code. Silakan perbaiki sesuai komentar AI di atas.');
+              } else {
+                console.log('✅ AI Code Reviewer Menyetujui PR ini.');
+              }
+
             } catch (error) {
               core.setFailed(`Gagal menjalankan AI Review: ${error.message}`);
             }

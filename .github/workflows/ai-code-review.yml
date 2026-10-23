@@ -23,7 +23,7 @@ jobs:
       # STAGE 1: COMPILER & LINTER CHECK (.NET & GOLANG)
       # -------------------------------------------------------------
       - name: Check .NET Project
-        shell: pwsh
+        shell: powershell
         run: |
           $csproj = Get-ChildItem -Recurse -Filter *.csproj -ErrorAction SilentlyContinue | Select-Object -First 1
           if ($csproj) {
@@ -35,6 +35,7 @@ jobs:
           }
 
       - name: Check Golang Project
+        shell: powershell
         run: |
           if (Test-Path "go.mod") {
             Write-Host "==> Proyek Golang terdeteksi. Menjalankan go vet..."

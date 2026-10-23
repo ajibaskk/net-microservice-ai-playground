@@ -1,154 +1,157 @@
-stages:
-  - lint
-  - ai-review
+name: CI & AI Code Reviewer
 
-variables:
-  OLLAMA_ENDPOINT: "http://127.0.0.1:11434/api/generate"
-  AI_MODEL: "qwen3.8:27b"
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
 
-# ==========================================
-# STAGE 1: COMPILER & STATIC LINTER CHECK
-# ==========================================
-official_linter_check:
-  stage: lint
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-  tags:
-    - local-ai-runner
-  script:
-    - echo "🔍 Menjalankan kompilasi & static analysis resmi..."
-    # Validasi C# (.NET)
-    - |
-      if Get-ChildItem -Recurse -Filter *.csproj -ErrorAction SilentlyContinue | Select-Object -First 1; then
-        echo "==> Validasi .NET Build..."
-        dotnet build --no-incremental /clp:ErrorsOnly
-      fi
-    # Validasi Golang
-    - |
-      if (Test-Path "go.mod") {
-        echo "==> Validasi Golang vet..."
-        go vet ./...
-      fi
+jobs:
+  review:
+    runs-on: self-hosted
 
-# ==========================================
-# STAGE 2: ADVANCED AI CODE REVIEW (QWEN 27B)
-# ==========================================
-advanced_ai_review:
-  stage: ai-review
-  needs: ["official_linter_check"]
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-  tags:
-    - local-ai-runner
-  script:
-    - node -e "
-        const { execSync } = require('child_process');
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
 
-        async function runComprehensiveReview() {
-          console.log('🚀 Memulai AI Code Review dengan model $AI_MODEL...');
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-          // 1. Ambil Git Diff
-          let diff = '';
-          try {
-            diff = execSync('git diff origin/' + process.env.CI_MERGE_REQUEST_TARGET_BRANCH_NAME + '...HEAD', { encoding: 'utf-8' });
-          } catch (e) {
-            console.error('❌ Gagal mengambil git diff:', e);
-            process.exit(1);
-          }
-
-          if (!diff || diff.trim() === '') {
-            console.log('ℹ️ Tidak ada perubahan kode pada Merge Request ini.');
-            return;
-          }
-
-          const truncatedDiff = diff.length > 16000 ? diff.substring(0, 16000) + '\n...[Diff dipotong karena melebihi batas]' : diff;
-
-          // 2. Prompt Komprehensif: Arsitektur, Clean Code, Logic Bug, & Naming Conventions
-          const systemPrompt = \`Bertindaklah sebagai Lead Software Architect & Principal Code Reviewer untuk proyek C# (.NET) dan Golang.
-          Evaluasi perubahan kode (diff) berikut secara kritis dan terperinci berdasarkan standar utama berikut:
-
-          1. ARSITEKTUR & DESAIN LAYER
-             - Clean/Hexagonal Architecture: Layer Domain/Core TIDAK BOLEH mengimpor/memanggil paket dari Infrastructure, Persistence, atau API.
-             - API Handler/Controller HANYA BOLEH memanggil Use Case / Service / Mediator (dilarang query DB/Repository langsung).
-             - Prinsip SOLID: Single Responsibility, Dependency Inversion (bergantung pada Interface/Abstraksi).
-
-          2. LOGIC BUGS & POTENSI ERROR FATAL
-             - Cek potensi NullReferenceException (C#) / Nil Pointer Dereference (Go).
-             - Cek kesalahan logika kondisi (misal: kondisi 'if' yang salah, off-by-one error pada loop, operator logika yang terbalik).
-             - Cek potensi Resource Leak (IDisposable tanpa 'using' di .NET, atau Goroutine leak / Channel mati di Go).
-             - Cek kesalahan Asynchronous: .Result / .Wait() di .NET, atau unhandled Goroutine error di Go.
-
-          3. PENULISAN NAMA FUNCTION & VARIABLE (NAMING CONVENTIONS)
-             - C# (.NET): PascalCase untuk Method, Property, Class; camelCase untuk parameter & private variable (misal: '_repository').
-             - Golang: camelCase untuk private, PascalCase untuk exported/public (misal: 'UserResponse' vs 'userResponse').
-             - Semantik Nama (Kesesuaian Peruntukan):
-               * Nama fungsi WAJIB berupa Kata Kerja (Verb) yang mendeskripsikan aktingnya (contoh BURUK: 'CalculateData()' jika fungsinya menyimpan data ke DB; gunakan 'SaveData()').
-               * Nama variabel WAJIB menggambarkan data yang disimpan (hindari nama generik/singkatan tidak jelas seperti 'x', 'temp', 'data2', 'process()').
-               * Fungsi tipe Boolean HARUS menggunakan awalan 'Is', 'Has', atau 'Can' (contoh: 'IsValid', 'HasPermission').
-
-          4. CLEAN CODE & READABILITY
-             - Hindari 'Magic Numbers' atau 'Magic Strings' (gunakan Constant / Enum).
-             - Fungsi terlalu panjang atau memiliki Cyclomatic Complexity yang terlalu tinggi.
-             - Golang: Wajib mengecek error (if err != nil) dan melakukan error wrapping (fmt.Errorf(\"...: %w\", err)).
-
-          --- FORMAT OUTPUT ULASAN ---
-          Berikan ulasan singkat dan jelas dalam Bahasa Indonesia dengan struktur berikut:
-          1. **Ringkasan Perubahan:** (1-2 kalimat ringkasan)
-          2. **Temuan Masalah (Arsitektur / Logic Bug / Naming / Clean Code):**
-             (Sebutkan nama file, perkiraan baris, jenis masalah, dan alasan kenapa hal tersebut melanggar aturan. Jika bersih, tulis 'Tidak ada masalah ditemukan')
-          3. **Saran Perbaikan Kode:** (Berikan contoh snippet kode perbaikannya yang benar)
-          4. **Keputusan Final:** 
-             - Jika terdapat kesalahan arsitektur, logic bug, penamaan yang sangat membingungkan, atau clean code yang buruk, AKHIRI balasan Anda dengan teks persis: **[REJECTED]**
-             - Jika kode sudah bersih dan memenuhi semua standar, AKHIRI balasan Anda dengan teks persis: **[APPROVED]**\`;
-
-          const prompt = \`\${systemPrompt}\n\nBerikut adalah diff kode yang harus dievaluasi:\n\`\`\`diff\n\${truncatedDiff}\n\`\`\`\`;
-
-          // 3. Panggil Ollama API (127.0.0.1)
-          const response = await fetch('$OLLAMA_ENDPOINT', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              model: '$AI_MODEL',
-              prompt: prompt,
-              stream: false,
-              options: {
-                temperature: 0.1,
-                top_p: 0.9,
-                num_ctx: 16384
-              }
-            })
-          });
-
-          if (!response.ok) {
-            console.error('❌ Gagal memanggil Ollama API:', response.statusText);
-            process.exit(1);
-          }
-
-          const data = await response.json();
-          const reviewResult = data.response;
-
-          // 4. Posting Komentar ke GitLab Merge Request
-          const gitlabApiUrl = \`\${process.env.CI_API_V4_URL}/projects/\${process.env.CI_PROJECT_ID}/merge_requests/\${process.env.CI_MERGE_REQUEST_IID}/notes\`;
-          
-          await fetch(gitlabApiUrl, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'PRIVATE-TOKEN': process.env.GITLAB_TOKEN
-            },
-            body: JSON.stringify({
-              body: \`### 🤖 Advanced AI Code Review (Qwen 3.8 - 27B)\n\n\${reviewResult}\`
-            })
-          });
-
-          // 5. Penentuan Kelulusan Pipeline
-          if (reviewResult.includes('[REJECTED]')) {
-            console.error('❌ AI Reviewer Menolak Merge Request ini. Ditemukan pelanggaran kode/arsitektur.');
-            process.exit(1);
+      # -------------------------------------------------------------
+      # STAGE 1: COMPILER & LINTER CHECK (.NET & GOLANG)
+      # -------------------------------------------------------------
+      - name: Check .NET Project
+        run: |
+          $csproj = Get-ChildItem -Recurse -Filter *.csproj -ErrorAction SilentlyContinue | Select-Object -First 1
+          if ($csproj) {
+            Write-Host "==> Proyek .NET terdeteksi. Menjalankan dotnet build..."
+            dotnet build --no-incremental /clp:ErrorsOnly
           } else {
-            console.log('✅ AI Reviewer Menyetujui Merge Request ini.');
+            Write-Host "==> Bukan proyek .NET, melewati step ini."
           }
-        }
 
-        runComprehensiveReview();
-      "
+      - name: Check Golang Project
+        run: |
+          if (Test-Path "go.mod") {
+            Write-Host "==> Proyek Golang terdeteksi. Menjalankan go vet..."
+            go vet ./...
+          } else {
+            Write-Host "==> Bukan proyek Golang, melewati step ini."
+          }
+
+      # -------------------------------------------------------------
+      # STAGE 2: ADVANCED AI CODE REVIEW (QWEN 27B)
+      # -------------------------------------------------------------
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Get PR Diff & Run Local AI Review
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const execSync = require('child_process').execSync;
+
+            async function runReview() {
+              // 1. Ambil Git Diff
+              let diff = '';
+              try {
+                diff = execSync('git diff origin/' + context.payload.pull_request.base.ref + '...HEAD', { encoding: 'utf-8' });
+              } catch (err) {
+                console.error('Gagal mengambil git diff:', err);
+                return;
+              }
+
+              if (!diff || diff.trim() === '') {
+                console.log('Tidak ada perubahan kode.');
+                return;
+              }
+
+              const maxDiffLength = 16000;
+              const truncatedDiff = diff.length > maxDiffLength ? diff.substring(0, maxDiffLength) + '\n...[Diff dipotong]' : diff;
+
+              // 2. Prompt Komprehensif Arsitektur, Clean Code, Logic Bug & Naming
+              const systemPrompt = `Bertindaklah sebagai Lead Software Architect & Principal Code Reviewer untuk proyek C# (.NET) dan Golang.
+              Evaluasi perubahan kode (diff) berikut secara kritis dan terperinci berdasarkan standar utama berikut:
+
+              1. ARSITEKTUR & DESAIN LAYER
+                 - Clean/Hexagonal Architecture: Layer Domain/Core TIDAK BOLEH mengimpor/memanggil paket dari Infrastructure, Persistence, atau API.
+                 - API Handler/Controller HANYA BOLEH memanggil Use Case / Service / Mediator (dilarang query DB/Repository langsung).
+                 - Prinsip SOLID: Single Responsibility, Dependency Inversion (bergantung pada Interface/Abstraksi).
+
+              2. LOGIC BUGS & POTENSI ERROR FATAL
+                 - Cek potensi NullReferenceException (C#) / Nil Pointer Dereference (Go).
+                 - Cek kesalahan logika kondisi (misal: kondisi 'if' yang salah, off-by-one error pada loop, operator logika yang terbalik).
+                 - Cek potensi Resource Leak (IDisposable tanpa 'using' di .NET, atau Goroutine leak / Channel mati di Go).
+                 - Cek kesalahan Asynchronous: .Result / .Wait() di .NET, atau unhandled Goroutine error di Go.
+
+              3. PENULISAN NAMA FUNCTION & VARIABLE (NAMING CONVENTIONS)
+                 - C# (.NET): PascalCase untuk Method, Property, Class; camelCase untuk parameter & private variable (misal: '_repository').
+                 - Golang: camelCase untuk private, PascalCase untuk exported/public (misal: 'UserResponse' vs 'userResponse').
+                 - Semantik Nama: Nama fungsi WAJIB berupa Kata Kerja (Verb). Nama variabel WAJIB menggambarkan data. Fungsi boolean HARUS menggunakan awalan 'Is', 'Has', atau 'Can'.
+
+              4. CLEAN CODE & READABILITY
+                 - Hindari 'Magic Numbers' atau 'Magic Strings' (gunakan Constant / Enum).
+                 - Golang: Wajib mengecek error (if err != nil) dan melakukan error wrapping (fmt.Errorf("...: %w", err)).
+
+              --- FORMAT OUTPUT ULASAN ---
+              Berikan ulasan singkat dan jelas dalam Bahasa Indonesia dengan struktur berikut:
+              1. **Ringkasan Perubahan:** (1-2 kalimat ringkasan)
+              2. **Temuan Masalah (Arsitektur / Logic Bug / Naming / Clean Code):** (Sebutkan nama file, perkiraan baris, jenis masalah, dan alasan pelanggarannya)
+              3. **Saran Perbaikan Kode:** (Berikan contoh snippet kode perbaikannya yang benar)
+              4. **Keputusan Final:** 
+                 - Jika terdapat kesalahan arsitektur, logic bug, penamaan yang membingungkan, atau clean code yang buruk, AKHIRI balasan Anda dengan teks persis: **[REJECTED]**
+                 - Jika kode sudah bersih dan memenuhi semua standar, AKHIRI balasan Anda dengan teks persis: **[APPROVED]**`;
+
+              const prompt = `${systemPrompt}\n\nBerikut diff kode:\n\`\`\`diff\n${truncatedDiff}\n\`\`\``;
+
+              console.log('Mengirimkan diff ke Ollama lokal (Qwen 27B)...');
+
+              try {
+                // 3. Panggil API Ollama (IP 127.0.0.1 agar terhindar dari isu IPv6)
+                const response = await fetch('http://127.0.0.1:11434/api/generate', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  duplex: 'half',
+                  body: JSON.stringify({
+                    model: 'qwen3.8:27b',
+                    prompt: prompt,
+                    stream: false,
+                    options: {
+                      temperature: 0.1,
+                      top_p: 0.9,
+                      num_ctx: 16384
+                    }
+                  })
+                });
+
+                if (!response.ok) throw new Error(`Ollama Error: ${response.statusText}`);
+
+                const data = await response.json();
+                const reviewResult = data.response;
+
+                // 4. Posting Komentar Hasil Review ke Pull Request
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  body: `### 🤖 Advanced AI Code Review (Qwen 3.8 - 27B)\n\n${reviewResult}`
+                });
+
+                // 5. Penentuan Kelulusan Status Check
+                if (reviewResult.includes('[REJECTED]')) {
+                  core.setFailed('❌ AI Reviewer Menolak PR ini: Ditemukan pelanggaran arsitektur, logic bug, atau clean code.');
+                } else {
+                  console.log('✅ AI Reviewer Menyetujui PR ini.');
+                }
+
+              } catch (error) {
+                core.setFailed(`Gagal menjalankan AI Review: ${error.message}`);
+              }
+            }
+
+            await runReview();

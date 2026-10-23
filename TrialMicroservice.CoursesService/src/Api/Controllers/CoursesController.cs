@@ -15,7 +15,7 @@ public class CoursesController(CourseService courses) : ControllerBase
     [HttpGet("{id:int}")]
     public async Task<IActionResult> Get(int id, CancellationToken ct)
     {
-        var course = await courses.FindAsync(id, ct);
+        var c = await courses.FindAsync(id, ct);
         return course is null ? NotFound() : Ok(course);
     }
 

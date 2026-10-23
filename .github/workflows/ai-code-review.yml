@@ -45,7 +45,7 @@ jobs:
           }
 
       # -------------------------------------------------------------
-      # STAGE 2: ADVANCED AI CODE REVIEW (QWEN 27B)
+      # STAGE 2: ADVANCED AI CODE REVIEW (QWEN 3 - 14B)
       # -------------------------------------------------------------
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -112,7 +112,7 @@ jobs:
 
               const prompt = `${systemPrompt}\n\nBerikut diff kode:\n\`\`\`diff\n${truncatedDiff}\n\`\`\``;
 
-              console.log('Mengirimkan diff ke Ollama lokal (Qwen 27B)...');
+              console.log('Mengirimkan diff ke Ollama lokal (Qwen 3 - 14B)...');
 
               try {
                 // 3. Panggil API Ollama (IP 127.0.0.1 agar terhindar dari isu IPv6)
@@ -121,7 +121,7 @@ jobs:
                   headers: { 'Content-Type': 'application/json' },
                   duplex: 'half',
                   body: JSON.stringify({
-                    model: 'qwen3.8:27b',
+                    model: 'qwen3:14b',
                     prompt: prompt,
                     stream: false,
                     options: {
@@ -142,7 +142,7 @@ jobs:
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: context.issue.number,
-                  body: `### 🤖 Advanced AI Code Review (Qwen 3.8 - 27B)\n\n${reviewResult}`
+                  body: `### 🤖 Advanced AI Code Review (Qwen 3 - 14B)\n\n${reviewResult}`
                 });
 
                 // 5. Penentuan Kelulusan Status Check

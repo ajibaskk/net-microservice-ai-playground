@@ -23,11 +23,13 @@ jobs:
       # STAGE 1: COMPILER & LINTER CHECK (.NET & GOLANG)
       # -------------------------------------------------------------
       - name: Check .NET Project
+        shell: pwsh
         run: |
           $csproj = Get-ChildItem -Recurse -Filter *.csproj -ErrorAction SilentlyContinue | Select-Object -First 1
           if ($csproj) {
-            Write-Host "==> Proyek .NET terdeteksi. Menjalankan dotnet build..."
-            dotnet build --no-incremental /clp:ErrorsOnly
+            Write-Host "==> Proyek .NET terdeteksi di: $($csproj.FullName)"
+            Write-Host "==> Menjalankan dotnet build..."
+            dotnet build "$($csproj.FullName)" --no-incremental /clp:ErrorsOnly
           } else {
             Write-Host "==> Bukan proyek .NET, melewati step ini."
           }

@@ -19,12 +19,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup .NET SDK
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '10.0.x'
-          include-prerelease: true # Diperlukan jika .NET 10 masih dalam tahap preview/RC
-
       # -------------------------------------------------------------
       # STAGE 1: COMPILER & LINTER CHECK (.NET & GOLANG)
       # -------------------------------------------------------------
